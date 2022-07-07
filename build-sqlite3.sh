@@ -5,7 +5,7 @@ PLATFORM=$1
 echo "Building for platform ${PLATFORM}"
 
 if [ "${PLATFORM}" = "win64" ]; then
-	cl /c /I./src src/shell.c src/sqlite3.c /Folibsqlite3.obj
+	cl /c src/shell.c src/sqlite3.c /out:libsqlite3.obj
     lib libsqlite3.obj 
 elif [ "${PLATFORM}" = "linux" ]; then
     gcc -c -I./src src/shell.c src/sqlite3.c -lpthread -ldl -lm 
