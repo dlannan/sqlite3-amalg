@@ -4,10 +4,10 @@ PLATFORM=$1
 
 echo "Building for platform ${PLATFORM}"
 
-make clean
-make ${PLATFORM} LUAC_STR_SIZE_TYPE=size_t
 if [ "${PLATFORM}" = "win64" ]; then
-	mv src/splite3.exe sqlite3-64.exe
-else
-	mv src/sqlite3 sqlite3-64
+	cl shell.c sqlite3.c -Fesqlite3.exe
+else if [ "${PLATFORM}" = "linux" ]; then
+    gcc shell.c sqlite3.c -lpthread -ldl -lm -o sqlite3
+else if [ "${PLATFORM}" = "macosx" ]; then
+    gcc shell.c sqlite3.c -lpthread -ldl -lm -o sqlite3	
 fi
