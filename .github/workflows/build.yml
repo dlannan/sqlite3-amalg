@@ -1,4 +1,4 @@
-name: "lua5.1.5"
+name: "sqlite3-amalg"
 
 on:
   push:
@@ -10,43 +10,40 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v2
-        - name: Build luac tool for Linux
+        - name: Build sqlite3 lib for Linux
           run: |
-            ./build-luac.sh linux
+            ./build-sqlite3.sh linux
         
         - name: Archive results
           uses: actions/upload-artifact@v3
           with:
-            name: Linux luac
+            name: Linux sqlite3
             path: |
-              ./luac-32
-              ./luac-64
+              ./sqlite3
     build-windows:
       runs-on: windows-latest
       steps:
         - uses: actions/checkout@v2
-        - name: Build luac tool for MinGW
-          run: ./build-luac.sh mingw
+        - name: Build sqlite3 lib for Win64
+          run: ./build-sqlite3.sh win64
           shell: bash
            
         - name: Archive results
           uses: actions/upload-artifact@v3
           with:
-            name: Windows luac
+            name: Windows sqlite3
             path: |
-              ./luac-32.exe
-              ./luac-64.exe
+              ./sqlite3.exe
     build-macos:
       runs-on: macos-latest
       steps:
         - uses: actions/checkout@v2
-        - name: Build luac tool for macos
-          run: ./build-luac.sh macosx
+        - name: Build sqlite lib for macos
+          run: ./build-sqlite3.sh macosx
               
         - name: Archive results
           uses: actions/upload-artifact@v3
           with:
-            name: macOS luac
+            name: macOS sqlite3
             path: |
-              ./luac-32
-              ./luac-64
+              ./sqlite3
