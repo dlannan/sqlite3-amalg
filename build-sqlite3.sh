@@ -5,9 +5,13 @@ PLATFORM=$1
 echo "Building for platform ${PLATFORM}"
 
 if [ "${PLATFORM}" = "win64" ]; then
-	cl -I./src src/shell.c src/sqlite3.c -Fesqlite3.exe
+	cl /c /EHsc -I./src src/shell.c src/sqlite3.c -Fesqlite3.obj
+    lib /out:libsqlite3.lib sqlite3.obj 
 elif [ "${PLATFORM}" = "linux" ]; then
-    gcc -I./src src/shell.c src/sqlite3.c -lpthread -ldl -lm -o sqlite3
+    gcc -c -I./src src/shell.c src/sqlite3.c -lpthread -ldl -lm -o sqlite3.o
+    ar rcs libsqlite3.a sqlite3.o
 elif [ "${PLATFORM}" = "macosx" ]; then
-    gcc -I./src src/shell.c src/sqlite3.c -lpthread -ldl -lm -o sqlite3	
+    gcc -c -I./src src/shell.c src/sqlite3.c -lpthread -ldl -lm -o sqlite3.o
+    ar rcs libsqlite3.a sqlite3.o
 fi
+

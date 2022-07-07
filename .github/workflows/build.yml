@@ -19,7 +19,7 @@ jobs:
           with:
             name: Linux sqlite3
             path: |
-              ./sqlite3
+              ./libsqlite3.a
     build-windows:
       runs-on: windows-latest
       steps:
@@ -34,7 +34,7 @@ jobs:
           with:
             name: Windows sqlite3
             path: |
-              ./sqlite3.exe
+              ./libsqlite3.lib
     build-macos:
       runs-on: macos-latest
       steps:
@@ -47,4 +47,4 @@ jobs:
           with:
             name: macOS sqlite3
             path: |
-              ./sqlite3
+              ./libsqlite3.a
