@@ -1,0 +1,52 @@
+name: "lua5.1.5"
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+    build-linux:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v2
+        - name: Build luac tool for Linux
+          run: |
+            ./build-luac.sh linux
+        
+        - name: Archive results
+          uses: actions/upload-artifact@v3
+          with:
+            name: Linux luac
+            path: |
+              ./luac-32
+              ./luac-64
+    build-windows:
+      runs-on: windows-latest
+      steps:
+        - uses: actions/checkout@v2
+        - name: Build luac tool for MinGW
+          run: ./build-luac.sh mingw
+          shell: bash
+           
+        - name: Archive results
+          uses: actions/upload-artifact@v3
+          with:
+            name: Windows luac
+            path: |
+              ./luac-32.exe
+              ./luac-64.exe
+    build-macos:
+      runs-on: macos-latest
+      steps:
+        - uses: actions/checkout@v2
+        - name: Build luac tool for macos
+          run: ./build-luac.sh macosx
+              
+        - name: Archive results
+          uses: actions/upload-artifact@v3
+          with:
+            name: macOS luac
+            path: |
+              ./luac-32
+              ./luac-64
