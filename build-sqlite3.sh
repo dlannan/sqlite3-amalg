@@ -13,5 +13,8 @@ elif [ "${PLATFORM}" = "linux" ]; then
 elif [ "${PLATFORM}" = "macosx" ]; then
     gcc -c -I./src src/shell.c src/sqlite3.c -lpthread -ldl -lm 
     ar rcs libsqlite3.a sqlite3.o shell.o
+elif [ "${PLATFORM}" = "ios64" ]; then
+    gcc -c -I./src src/shell.c src/sqlite3.c -lpthread -ldl -lm -arch arm64
+    ar rcs libsqlite3.a sqlite3.o shell.o
 fi
 
