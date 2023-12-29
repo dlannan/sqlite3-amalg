@@ -48,3 +48,16 @@ jobs:
             name: macOS sqlite3
             path: |
               ./libsqlite3.a
+    build-ios64:
+      runs-on: macos-latest
+      steps:
+        - uses: actions/checkout@v2
+        - name: Build sqlite lib for iosarm64
+          run: ./build-sqlite3.sh ios64
+              
+        - name: Archive results
+          uses: actions/upload-artifact@v3
+          with:
+            name: ios64 sqlite3
+            path: |
+              ./libsqlite3.a
