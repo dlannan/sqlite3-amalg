@@ -66,7 +66,7 @@ jobs:
       steps:
         - uses: actions/checkout@v2
         - name: Install arm compiler
-          run: sudo apt install -y gcc-9-aarch64-linux-gnu
+          run: sudo apt-get install -y gcc-arm-linux-gnueabihf
         - name: Build sqlite lib for android
           run: ./build-sqlite3.sh android
               
