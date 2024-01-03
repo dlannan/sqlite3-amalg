@@ -17,8 +17,7 @@ elif [ "${PLATFORM}" = "ios64" ]; then
     gcc -c -I./src src/shell.c src/sqlite3.c -lpthread -ldl -lm -arch arm64
     ar rcs libsqlite3.a sqlite3.o shell.o
 elif [ "${PLATFORM}" = "android" ]; then
-    sudo apt install crossbuild-essential-armhf crossbuild-essential-arm64
-   gcc -c -I./src src/shell.c src/sqlite3.c -lpthread -ldl -lm -march=armv7
+    aarch64-linux-gnu-gcc -c -I./src src/shell.c src/sqlite3.c -lpthread -ldl -lm -march=armv7
     ar rcs libsqlite3.a sqlite3.o shell.o    
 fi
 
