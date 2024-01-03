@@ -17,7 +17,7 @@ elif [ "${PLATFORM}" = "ios64" ]; then
     gcc -c -I./src src/shell.c src/sqlite3.c -lpthread -ldl -lm -arch arm64
     ar rcs libsqlite3.a sqlite3.o shell.o
 elif [ "${PLATFORM}" = "android" ]; then
-    arm-linux-gnueabihf-gcc -c -I./src src/shell.c src/sqlite3.c -lpthread -ldl -lm -march=armv7-a+fp
+    arm-linux-gnueabihf-gcc -c -I./src src/shell.c src/sqlite3.c -lpthread -ldl -lm -fPIC -march=armv7-a+fp
     ar rcs libsqlite3.a sqlite3.o shell.o    
 fi
 
