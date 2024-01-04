@@ -23,7 +23,7 @@ elif [ "${PLATFORM}" = "android" ]; then
     aarch64-linux-android30-clang -c -I./src -Iandroid-ndk-r26b/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include src/shell.c src/sqlite3.c -D__ANDROID__ -lpthread -ldl -lm -fPIC -static
     llvm-ar rcs libsqlite3.a sqlite3.o shell.o    
     rm sqlite3.o shell.o
-    armv7a-linux-androideabi30-clang -c -I./src -Iandroid-ndk-r26b/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include src/shell.c src/sqlite3.c -D__ANDROID__ -D__USE_FILE_OFFSET64 -lpthread -ldl -lm -fPIC -static
+    armv7a-linux-androideabi30-clang -c -I./src -Iandroid-ndk-r26b/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include src/shell.c src/sqlite3.c -D__ANDROID__ -D_FILE_OFFSET_BITS=64 -lpthread -ldl -lm -fPIC -static
     llvm-ar rcs libsqlite3-armv7.a sqlite3.o shell.o    
 fi
 
