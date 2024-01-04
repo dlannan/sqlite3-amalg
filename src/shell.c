@@ -110,11 +110,7 @@ typedef unsigned char u8;
 #include <stdarg.h>
 
 #if !defined(_WIN32) && !defined(WIN32)
-# if defined(__ANDROID__)
-# include <csignal.h>
-# else
 # include <signal.h>
-# endif
 # if !defined(__RTP__) && !defined(_WRS_KERNEL)
 #  include <pwd.h>
 # endif
