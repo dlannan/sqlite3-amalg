@@ -36,6 +36,10 @@
 #define _CRT_SECURE_NO_WARNINGS
 #endif
 
+#if (defined(__ANDROID__))
+#include <sys/mman.h>
+#endif 
+
 /*
 ** Optionally #include a user-defined header, whereby compilation options
 ** may be set prior to where they take effect, but after platform setup. 
