@@ -70,7 +70,7 @@ jobs:
         - name: Install arm compiler
           run: unzip android-ndk-r20b-linux-x86_64.zip
         - name: Rename folder for generic ndk use
-          run: sudo mv android-ndk-r20b android-ndk
+          run: mv android-ndk-r20b android-ndk
         - name: Build sqlite lib for android
           run: ./build-sqlite3.sh android
               
