@@ -78,3 +78,9 @@ jobs:
             name: android sqlite3
             path: |
               ./libsqlite3.a              
+        - name: Archive armv7 results
+          uses: actions/upload-artifact@v3
+          with:
+            name: android sqlite3
+            path: |
+              ./libsqlite3-armv7.a              
