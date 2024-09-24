@@ -20,10 +20,10 @@ elif [ "${PLATFORM}" = "android" ]; then
     export PATH="android-ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/:$PATH"
     export PATH="android-ndk/toolchains/llvm/prebuilt/linux-x86_64/:$PATH"
     
-    aarch64-linux-android30-clang -c -I./src -Iandroid-ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include src/shell.c src/sqlite3.c -D__ANDROID__ -D__ANDROID_MIN_SDK_VERSION__=30 -lpthread -lm -fPIC -static
+    aarch64-linux-android19-clang++ -c -I./src -Iandroid-ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include src/shell.c src/sqlite3.c -D__ANDROID__ -D__ANDROID_MIN_SDK_VERSION__=30 -lpthread -lm -fPIC -static
     llvm-ar rcs libsqlite3.a sqlite3.o shell.o    
     rm sqlite3.o shell.o
-    armv7a-linux-androideabi30-clang -c -I./src -Iandroid-ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include src/shell.c src/sqlite3.c src/mmap.c -D__ANDROID__ -D__ANDROID_MIN_SDK_VERSION__=30 -lpthread -lm -fPIC -static
+    armv7a-linux-androideabi19-clang++ -c -I./src -Iandroid-ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include src/shell.c src/sqlite3.c src/mmap.c -D__ANDROID__ -D__ANDROID_MIN_SDK_VERSION__=30 -lpthread -lm -fPIC -static
     llvm-ar rcs libsqlite3-armv7.a sqlite3.o shell.o mmap.o
 fi
 
